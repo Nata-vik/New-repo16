@@ -14,7 +14,6 @@ public class Radio {
         return currentRadioStation;
     }
 
-
     public void setCurrentRadioStation(int newCurrentRadioStation) {
         if (newCurrentRadioStation > 9) {
             return;
@@ -25,9 +24,9 @@ public class Radio {
         currentRadioStation = newCurrentRadioStation;
     }
 
-
     public void setCurrentVolume(int newCurrentVolume) {
         if (newCurrentVolume > 100) {
+            currentVolume = 100;
             return;
         }
         if (newCurrentVolume < 0) {
@@ -49,7 +48,6 @@ public class Radio {
             currentVolume = currentVolume - 1;
         }
     }
-
 
     public void next() {                // следущая радиостанция
         if (currentRadioStation < 9) {

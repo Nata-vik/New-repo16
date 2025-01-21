@@ -30,7 +30,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolumeMoreMax() {   //увеличить громкость выше максимума
-        radio.setCurrentVolume(100);
+        radio.setCurrentVolume(101);
         radio.increaseVolume();
 
         int expected = 100;
@@ -41,7 +41,7 @@ public class RadioTest {
 
     @Test
     public void decreaseVolumeLowerMin() {    //уменьшить громкость меньше мин
-        radio.setCurrentVolume(0);
+        radio.setCurrentVolume(-1);
         radio.decreaseVolume();
 
         int expected = 0;

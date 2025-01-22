@@ -30,7 +30,7 @@ public class RadioTest {
 
     @Test
     public void increaseVolumeMoreMax() {   //увеличить громкость выше максимума
-        radio.setCurrentVolume(101);
+        radio.setCurrentVolume(115);
         radio.increaseVolume();
 
         int expected = 100;

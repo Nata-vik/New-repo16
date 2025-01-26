@@ -2,34 +2,47 @@ package ru.netology;
 
 public class Radio {
 
-    private int currentVolume;         // текущий уровень громкости
-    private int currentRadioStation;   // текущая радиостанция
+    private int currentStation;
+    private int currentVolume;
+    private int maxStation;
+
+
+    public Radio() {
+        this.maxStation = 9;
+    }
+
+    public Radio(int stationsCount) {
+        this.maxStation = stationsCount - 1;
+    }
 
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
+
+    public int getCurrentStation() {
+        return currentStation;
     }
 
-    public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation > 9) {
+
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentRadioStation < 0) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        currentRadioStation = newCurrentRadioStation;
+        this.currentStation = newCurrentStation;
     }
+
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume > 100) {
-            currentVolume = 100;
+        if (newCurrentVolume < 0) {
             return;
         }
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume > 100) {
+            currentVolume = 100;
             return;
         }
         currentVolume = newCurrentVolume;
@@ -49,22 +62,21 @@ public class Radio {
         }
     }
 
+
     public void next() {                // следущая радиостанция
-        if (currentRadioStation < 9) {
-            currentRadioStation = currentRadioStation + 1;
-        } else {
-            currentRadioStation = 0;
+        if (currentStation != maxStation) {
+            currentStation++;
+            return;
         }
+        currentStation = 0;
     }
 
 
     public void prev() {                // предыдущая радиостанция
-        if (currentRadioStation > 0) {
-            currentRadioStation = currentRadioStation - 1;
+        if (currentStation != 0) {
+            currentStation--;
         } else {
-            currentRadioStation = 9;
+            currentStation = maxStation;
         }
     }
-
-
 }

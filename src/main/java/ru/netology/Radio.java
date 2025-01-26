@@ -2,8 +2,18 @@ package ru.netology;
 
 public class Radio {
 
-    private int currentVolume;         // текущий уровень громкости
-    private int currentRadioStation;   // текущая радиостанция
+    private int currentStation;
+    private int currentVolume;
+    private int maxStation;
+
+
+    public Radio() {
+        this.maxStation = 9;
+    }
+
+    public Radio(int stationsCount) {
+        this.maxStation = stationsCount - 1;
+    }
 
 
     public int getCurrentVolume() {
@@ -11,19 +21,19 @@ public class Radio {
     }
 
 
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
+    public int getCurrentStation() {
+        return currentStation;
     }
 
 
-    public void setCurrentRadioStation(int newCurrentRadioStation) {
-        if (newCurrentRadioStation < 0) {
+    public void setCurrentStation(int newCurrentStation) {
+        if (newCurrentStation < 0) {
             return;
         }
-        if (newCurrentRadioStation > 9) {
+        if (newCurrentStation > maxStation) {
             return;
         }
-        currentRadioStation = newCurrentRadioStation;
+        this.currentStation = newCurrentStation;
     }
 
 
@@ -54,19 +64,19 @@ public class Radio {
 
 
     public void next() {                // следущая радиостанция
-        if (currentRadioStation != 9) {
-            currentRadioStation++;
+        if (currentStation != maxStation) {
+            currentStation++;
             return;
         }
-            currentRadioStation = 0;
+        currentStation = 0;
     }
 
 
     public void prev() {                // предыдущая радиостанция
-        if (currentRadioStation != 0) {
-            currentRadioStation--;
+        if (currentStation != 0) {
+            currentStation--;
         } else {
-            currentRadioStation = 9;
+            currentStation = maxStation;
         }
     }
 }
